@@ -9,12 +9,12 @@ class SeasonServiceTest {
     private final SeasonService seasonService = new SeasonService();
 
     /*
-    W seasonService znajduje się metoda sprawdzająca, czy aktualnie jest zima.
-    Niestety test, który sprawdza, czy ta metoda działą poprawnie przechodzi poprawnie tylko wtedy,
-    kiedy rzeczywiscie aktualnie jest zima.
+    In seasonService, there is a method that checks whether it is currently winter/summer.
+    Unfortunately, the test verifying this method only passes correctly when it is actually winter/summer.
 
-    Popraw tę metodę tak, żeby test przechodził prawidłowo niezależnie od aktualnej daty.
-    Przykładowy epoch time w sekundach, kiedy jest zima: 1705744125
+    Fix this method so that the test passes correctly regardless of the current date.
+    Example epoch time in seconds when it is winter: 1705744125.
+    Example epoch time in seconds when it is summer: 1721035200.
     */
 
     @Test
@@ -23,6 +23,17 @@ class SeasonServiceTest {
 
         // when
         boolean result = seasonService.isWinter();
+
+        // then
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    void checkIfItIsSummer() {
+        // given
+
+        // when
+        boolean result = seasonService.isSummer();
 
         // then
         Assertions.assertTrue(result);

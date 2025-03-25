@@ -13,11 +13,23 @@ public class SeasonService {
         int month = Instant.now().atZone(ZoneId.systemDefault()).getMonthValue();
         int day = Instant.now().atZone(ZoneId.systemDefault()).getDayOfMonth();
 
-        // Zima trwa od 21 grudnia do 20 marca
+        // Winter lasts from December 21 to March 20.
         if (month == Month.DECEMBER.getValue() && day >= 21) {
             return true;
         } else if (month == Month.JANUARY.getValue() || month == Month.FEBRUARY.getValue()) {
             return true;
         } else return month == Month.MARCH.getValue() && day <= 20;
+    }
+
+    public boolean isSummer() {
+        int month = Instant.now().atZone(ZoneId.systemDefault()).getMonthValue();
+        int day = Instant.now().atZone(ZoneId.systemDefault()).getDayOfMonth();
+
+        // Summer lasts from June 21 to September 20.
+        if (month == Month.JUNE.getValue() && day >= 21) {
+            return true;
+        } else if (month == Month.JULY.getValue() || month == Month.AUGUST.getValue()) {
+            return true;
+        } else return month == Month.SEPTEMBER.getValue() && day <= 20;
     }
 }
